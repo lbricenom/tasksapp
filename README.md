@@ -34,7 +34,30 @@ The MVVM architecture pattern promotes a clear separation of concerns, making th
 
 By adopting MVVM with SwiftUI in TaskManager, the application benefits from improved code organization, testability, reusability, and maintainability. It uses SwiftUI's powerful features to build a robust and responsive user interface while keeping the business logic and state management decoupled in the ViewModel. This approach enables flexible development, easier maintenance, and better overall software quality.
 
+![Screenshot 2023-05-11 at 6 32 38 PM](https://github.com/lbricenom/tasksapp/assets/133252571/30ee34be-c6cd-49e7-99dc-4c01f10e2b20)
+
 ## Secure Token Storage with Keychain Access
 
 In TaskManager, the user authentication system utilizes Keychain Access to securely store the user token after login. The token is a sensitive piece of information that is used for subsequent authenticated requests to the server.
+
+## Diagrams
+
+
+![Screenshot 2023-05-11 at 6 13 46 PM](https://github.com/lbricenom/tasksapp/assets/133252571/8d647818-09b2-4f1a-9166-1f797b7315fa)
+
+
+
+
+
+
+![Screenshot 2023-05-11 at 6 13 41 PM](https://github.com/lbricenom/tasksapp/assets/133252571/93251b3f-3fe5-4b47-9d31-0e6a4af8b93e)
+
+
+
+
+![Screenshot 2023-05-11 at 6 16 15 PM](https://github.com/lbricenom/tasksapp/assets/133252571/cb2dfeb9-9e15-4f3d-aeb1-06d80e98582a)
+
+
+
+![Screenshot 2023-05-11 at 6 24 58 PM](https://github.com/lbricenom/tasksapp/assets/133252571/de6bc124-983a-4993-9271-b89e935ab625)
 
