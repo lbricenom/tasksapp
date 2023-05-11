@@ -6,7 +6,7 @@ TaskManager is a feature-rich task management application that allows users to e
 
 - User authentication: Users can recover password, and securely authenticate themselves.
 - Task management: Users can create, update, and delete tasks, set due dates, assign tasks to users, and track their progress.
-- User profiles: Users can view and manage their profiles, including their personal information and assigned tasks.
+- User profiles: Users can view and manage their profiles and assigned tasks.
 
 ## Architecture
 
