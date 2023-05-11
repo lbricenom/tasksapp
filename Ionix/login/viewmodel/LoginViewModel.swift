@@ -7,6 +7,24 @@
 import Foundation
 import Combine
 
+enum LoginError: Error {
+    case emptyUsernameAndPassword
+    case invalidUsernameOrPassword
+    case forgotPasswordEmptyUsername
+    
+    var errorMessage: String {
+        switch self {
+        case .emptyUsernameAndPassword:
+            return "Username and password cannot be empty."
+        case .invalidUsernameOrPassword:
+            return "Username or password contains special characters."
+        case .forgotPasswordEmptyUsername:
+            return "Username cannot be empty for password reset."
+        }
+    }
+}
+
+
 class LoginViewModel: ObservableObject {
     private let authService: AuthServiceProtocol
     
@@ -24,7 +42,23 @@ class LoginViewModel: ObservableObject {
         self.authService = authService
     }
     
-    func login() async {
+    func login() async throws {
+        guard !username.isEmpty && !password.isEmpty else {
+            DispatchQueue.main.async {
+                self.loginResult = .failure(LoginError.emptyUsernameAndPassword)
+            }
+            return
+        }
+        
+        let hasSpecialCharacters = CharacterSet(charactersIn: "!@#$%^&*()_-+={}[]|\\:;\"'<>,.?/~`").isDisjoint(with: CharacterSet(charactersIn: username + password))
+        guard hasSpecialCharacters else {
+
+            DispatchQueue.main.async {
+                self.loginResult = .failure(LoginError.invalidUsernameOrPassword)
+            }
+            return
+        }
+        
         DispatchQueue.main.async {
             self.isLoggingIn = true
         }
@@ -38,7 +72,6 @@ class LoginViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.loginResult = .failure(error)
             }
-            
         }
         DispatchQueue.main.async {
             self.isLoggingIn = false
@@ -46,7 +79,7 @@ class LoginViewModel: ObservableObject {
     }
     
     func logout() {
-//        authService.logout()
+        //        authService.logout()
     }
     
     func forgotPassword() async throws {
@@ -54,7 +87,7 @@ class LoginViewModel: ObservableObject {
             let error = NSError(domain: "com.ionix.forgotpassword.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Username cannot be empty"])
             throw error
         }
-
+        
         try await authService.forgotPassword(username: username)
     }
 }

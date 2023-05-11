@@ -88,6 +88,14 @@ struct LoginView: View {
                 break
             }
         }
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+
     }
 
     private func dismissView() {

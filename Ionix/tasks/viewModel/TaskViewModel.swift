@@ -54,12 +54,23 @@ class TaskViewModel : ObservableObject{
     }
     
     @discardableResult
-    func addTask(title: String, description: String, dueDate: Date, assignedTo: UserProfile?, status: TaskStatus) throws -> TaskModel  {
+    func addTask(title: String, description: String, dueDate: Date, assignedTo: UserProfile?, status: TaskStatus) throws -> TaskModel {
+        guard !title.isEmpty else {
+            throw TaskViewModelError.emptyTitle
+        }
         
-        if let user = assignedTo,
-           user.role == .admin {
+        guard !description.isEmpty else {
+            throw TaskViewModelError.emptyDescription
+        }
+        
+        guard let assignedTo = assignedTo, !assignedTo.username.isEmpty else {
+            throw TaskViewModelError.emptyAssignee
+        }
+        
+        if assignedTo.role == .admin {
             throw TaskViewModelError.cannotAddTaskToAdminRole
         }
+        
         let task = TaskModel(id: tasks.count + 1, title: title, description: description, dueDate: dueDate, assignedTo: assignedTo, status: status)
         tasks.append(task)
         
@@ -129,4 +140,24 @@ enum TaskViewModelError: Error {
     case cannotDeleteTaskInThisStatus
     case cannotUpdateTaskInThisStatus
     case cannotAddTaskToAdminRole
+    case emptyTitle
+    case emptyDescription
+    case emptyAssignee
+    
+    var errorMessage: String {
+        switch self {
+        case .cannotDeleteTaskInThisStatus:
+            return "Cannot delete task in this status."
+        case .cannotUpdateTaskInThisStatus:
+            return "Cannot update task in this status."
+        case .cannotAddTaskToAdminRole:
+            return "Cannot add task to an admin user."
+        case .emptyTitle:
+            return "Title cannot be empty."
+        case .emptyDescription:
+            return "Description cannot be empty."
+        case .emptyAssignee:
+            return "Assignee cannot be empty."
+        }
+    }
 }

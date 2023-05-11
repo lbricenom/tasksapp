@@ -23,14 +23,7 @@ protocol AuthServiceProtocol: NetworkRequestable {
 class AuthServiceImpl: AuthServiceProtocol {
     
     func login(username: String, password: String) async throws -> UserProfile {
-        guard !username.isEmpty && !password.isEmpty else {
-            let error = NSError(domain: "com.ionix.login.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Username and password cannot be empty"])
-            throw error
-        }
-        
-        let sanitizedUsername = username.removingSpecialCharacters()
-        let sanitizedPassword = password.removingSpecialCharacters()
-        return try await makeDecodableRequest(for: APIRouter.login(username: sanitizedUsername, password: sanitizedPassword))
+        return try await makeDecodableRequest(for: APIRouter.login(username: username, password: password))
     }
     
     func logout() async throws {

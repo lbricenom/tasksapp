@@ -74,7 +74,8 @@ struct AddTaskSheet: View {
     @State private var dueDate: Date = Date()
     @ObservedObject var taskManager: TaskViewModel
     @State private var selectedUser: UserProfile?
-
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     
     var body: some View {
         NavigationView {
@@ -94,7 +95,7 @@ struct AddTaskSheet: View {
                 }
                 Section(header: Text("Assignee")) {
                     Text("Select assignee")
-                            .foregroundColor(.secondary)
+                        .foregroundColor(.secondary)
                     NavigationLink(destination: UserListView(selectedUser: $selectedUser, taskManager: taskManager)) {
                         Text(selectedUser?.username ?? "")
                     }
@@ -104,21 +105,27 @@ struct AddTaskSheet: View {
                 Section {
                     Button("Add Task") {
                         do {
-                            try taskManager.addTask(title: title, description: description, dueDate: dueDate, assignedTo: nil, status: .assigned)
-                        }catch {
-                            print(error)
+                            try taskManager.addTask(title: title, description: description, dueDate: dueDate, assignedTo: selectedUser, status: .assigned)
+                            isPresented = false
+                        } catch let error as TaskViewModelError {
+                            showAlert = true
+                            alertMessage = error.errorMessage
+                        } catch {
+                            showAlert = true
+                            alertMessage = "An error occurred while adding the task."
                         }
-                        isPresented = false
                     }
                 }
             }
             .navigationBarTitle("Add Task")
             .navigationBarItems(trailing: Button("Cancel") { isPresented = false })
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
 
 struct UserListView: View {
     @Environment(\.presentationMode) var presentationMode
