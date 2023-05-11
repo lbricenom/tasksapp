@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "title": "Finish project",
+        "description": "Complete the final version of the project before the deadline.",
+        "dueDate": 1680911999,
+        "assignedTo": {
+            "id": 0,
+            "username": "john.doe",
+            "email": "john.doe@example.com",
+            "role": "executor"
+        },
+        "status": "assigned",
+        "comments": []
+    },
+    {
+        "id": 2,
+        "title": "Review code",
+        "description": "Review the code submitted by the team before it is merged.",
+        "dueDate": 1680211200,
+        "assignedTo": {
+            "id": 0,
+            "username": "jane.doe",
+            "email": "jane.doe@example.com",
+            "role": "executor"
+        },
+        "status": "inprogress",
+        "comments": [
+            "Looking good so far!",
+            "We need to fix that bug in line 42."
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Prepare presentation",
+        "description": "Prepare a presentation to showcase the project to stakeholders.",
+        "dueDate": 1681357200,
+        "assignedTo": null,
+        "status": "new",
+        "comments": [
+            "Do we have a volunteer to present?",
+            "Let's include some graphs to make it more engaging."
+        ]
+    }
+]
