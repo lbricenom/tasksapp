@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A03053472A0D8D6D00E8CCAE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CACD2A0D371C006F70F5 /* UserProfile.swift */; };
+		A030534A2A0D8FD100E8CCAE /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A03053492A0D8FD100E8CCAE /* KeychainAccess */; };
+		A030534F2A0D939F00E8CCAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A030534E2A0D939F00E8CCAE /* Localizable.strings */; };
+		A03053512A0D93B300E8CCAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A03053502A0D93B300E8CCAE /* Localizable.strings */; };
 		A0B6CA662A0B10FB006F70F5 /* IonixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CA652A0B10FB006F70F5 /* IonixApp.swift */; };
 		A0B6CA682A0B10FB006F70F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CA672A0B10FB006F70F5 /* ContentView.swift */; };
 		A0B6CA6A2A0B10FC006F70F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B6CA692A0B10FC006F70F5 /* Assets.xcassets */; };
@@ -60,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A030534E2A0D939F00E8CCAE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A03053502A0D93B300E8CCAE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A0B6CA622A0B10FB006F70F5 /* Ionix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ionix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B6CA652A0B10FB006F70F5 /* IonixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IonixApp.swift; sourceTree = "<group>"; };
 		A0B6CA672A0B10FB006F70F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A030534A2A0D8FD100E8CCAE /* KeychainAccess in Frameworks */,
 				A0B6CA872A0B18E2006F70F5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +114,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A030534B2A0D937600E8CCAE /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A030534D2A0D938D00E8CCAE /* en */,
+				A030534C2A0D938900E8CCAE /* es */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		A030534C2A0D938900E8CCAE /* es */ = {
+			isa = PBXGroup;
+			children = (
+				A03053502A0D93B300E8CCAE /* Localizable.strings */,
+			);
+			path = es;
+			sourceTree = "<group>";
+		};
+		A030534D2A0D938D00E8CCAE /* en */ = {
+			isa = PBXGroup;
+			children = (
+				A030534E2A0D939F00E8CCAE /* Localizable.strings */,
+			);
+			path = en;
+			sourceTree = "<group>";
+		};
 		A0B6CA592A0B10FB006F70F5 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +160,7 @@
 		A0B6CA642A0B10FB006F70F5 /* Ionix */ = {
 			isa = PBXGroup;
 			children = (
+				A030534B2A0D937600E8CCAE /* Localization */,
 				A0B6CA972A0B4FAE006F70F5 /* Network */,
 				A0B6CA882A0B23EB006F70F5 /* tasks */,
 				A0B6CA782A0B12BD006F70F5 /* login */,
@@ -311,6 +343,7 @@
 			name = Ionix;
 			packageProductDependencies = (
 				A0B6CA862A0B18E2006F70F5 /* Alamofire */,
+				A03053492A0D8FD100E8CCAE /* KeychainAccess */,
 			);
 			productName = Ionix;
 			productReference = A0B6CA622A0B10FB006F70F5 /* Ionix.app */;
@@ -364,6 +397,7 @@
 			mainGroup = A0B6CA592A0B10FB006F70F5;
 			packageReferences = (
 				A0B6CA852A0B18E2006F70F5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A03053482A0D8FD100E8CCAE /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = A0B6CA632A0B10FB006F70F5 /* Products */;
 			projectDirPath = "";
@@ -380,6 +414,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A030534F2A0D939F00E8CCAE /* Localizable.strings in Resources */,
+				A03053512A0D93B300E8CCAE /* Localizable.strings in Resources */,
 				A0B6CAA52A0BE1B5006F70F5 /* users.json in Resources */,
 				A0B6CA6D2A0B10FC006F70F5 /* Preview Assets.xcassets in Resources */,
 				A0B6CA6A2A0B10FC006F70F5 /* Assets.xcassets in Resources */,
@@ -698,6 +734,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A03053482A0D8FD100E8CCAE /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A0B6CA852A0B18E2006F70F5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -709,6 +753,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A03053492A0D8FD100E8CCAE /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A03053482A0D8FD100E8CCAE /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		A0B6CA862A0B18E2006F70F5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A0B6CA852A0B18E2006F70F5 /* XCRemoteSwiftPackageReference "Alamofire" */;

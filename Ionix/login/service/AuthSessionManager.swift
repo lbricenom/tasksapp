@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KeychainAccess
 
 protocol AuthSessionManagerProtocol: AnyObject {
     var isLoggedIn: Bool { get set }
@@ -16,13 +17,13 @@ protocol AuthSessionManagerProtocol: AnyObject {
 }
 
 class AuthSessionManager: ObservableObject, AuthSessionManagerProtocol {
-
+    private let keychain: Keychain
+    private let tokenKey = "authToken"
     
     @Published var isLoggedIn = false
     var token: String? {
-        didSet {
-            UserDefaults.standard.set(token, forKey: "token")
-        }
+        get { keychain[tokenKey] }
+        set { keychain[tokenKey] = newValue }
     }
     
     var userProfile: UserProfile? {
@@ -33,7 +34,8 @@ class AuthSessionManager: ObservableObject, AuthSessionManagerProtocol {
     }
     
     init() {
-        self.token = UserDefaults.standard.string(forKey: "token")
+        keychain = Keychain(service: "com.ionix.taskManager.keychain")
+        self.token = keychain[tokenKey]
         self.isLoggedIn = self.token != nil
         
         if let data = UserDefaults.standard.data(forKey: "userProfile") {
@@ -41,18 +43,17 @@ class AuthSessionManager: ObservableObject, AuthSessionManagerProtocol {
         }
     }
     
-    func login( userProfile: UserProfile) {
+    func login(userProfile: UserProfile) {
         self.token = userProfile.token
         self.isLoggedIn = true
         self.userProfile = userProfile
-        UserDefaults.standard.set(true, forKey: "isLoggedIn")
     }
     
     func logout() {
         self.token = nil
         self.isLoggedIn = false
         self.userProfile = nil
-        UserDefaults.standard.removeObject(forKey: "token")
+        keychain[tokenKey] = nil
         UserDefaults.standard.removeObject(forKey: "userProfile")
     }
     

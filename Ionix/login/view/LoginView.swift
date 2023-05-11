@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var viewModel: LoginViewModel
-    @EnvironmentObject var sessionManager: AuthSessionManager
+    
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var sessionManager: AuthSessionManager
+
+    @StateObject var viewModel: LoginViewModel
     @State private var forgotPasswordUsername = ""
 
     var body: some View {

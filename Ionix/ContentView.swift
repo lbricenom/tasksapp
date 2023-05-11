@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     @StateObject private var sessionManager = AuthSessionManager()
     @State private var isPresentingLogin = false
+    //Using mocked services as we dont have a concrete backend implementation, although the real services are implemented.
     private let loginViewModel = LoginViewModel(authService: MockedAuthService())
     private let taskViewModel = TaskViewModel(taskService: MockedRemoteTaskService())
 
