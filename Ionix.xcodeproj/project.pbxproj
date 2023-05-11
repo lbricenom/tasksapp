@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03053472A0D8D6D00E8CCAE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CACD2A0D371C006F70F5 /* UserProfile.swift */; };
 		A0B6CA662A0B10FB006F70F5 /* IonixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CA652A0B10FB006F70F5 /* IonixApp.swift */; };
 		A0B6CA682A0B10FB006F70F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CA672A0B10FB006F70F5 /* ContentView.swift */; };
 		A0B6CA6A2A0B10FC006F70F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B6CA692A0B10FC006F70F5 /* Assets.xcassets */; };
@@ -438,6 +439,7 @@
 				A0B6CAC22A0C3AB1006F70F5 /* TaskModel.swift in Sources */,
 				A0B6CABD2A0C3A8E006F70F5 /* NetworkRequestable.swift in Sources */,
 				A0B6CAC12A0C3AA1006F70F5 /* AuthSessionManager.swift in Sources */,
+				A03053472A0D8D6D00E8CCAE /* UserProfile.swift in Sources */,
 				A0B6CABF2A0C3A97006F70F5 /* MockTaskService.swift in Sources */,
 				A0B6CAB52A0C327C006F70F5 /* TaskViewModel.swift in Sources */,
 				A0B6CAC02A0C3A9F006F70F5 /* AuthService.swift in Sources */,

@@ -12,7 +12,7 @@ import XCTest
 class TaskViewModelTests: XCTestCase {
     
     var taskViewModel: TaskViewModel!
-    let user = UserProfile(id: 0, username: "", email: "", role: .executor, token: "")
+    let user = UserProfile(id: 0, username: "test", email: "test", role: .executor, token: "")
     
     override func setUp() {
         super.setUp()
@@ -37,7 +37,7 @@ class TaskViewModelTests: XCTestCase {
             XCTAssert(task.id == taskViewModel.tasks.count, "Expected task id to be \(taskViewModel.tasks.count), but got \(task.id)")
             XCTAssert(taskViewModel.tasks.contains(task), "Expected task to be added to the task list")
         }catch {
-            XCTAssert(false, error.localizedDescription.description)
+            XCTAssertNil(error)
         }
         
     }
